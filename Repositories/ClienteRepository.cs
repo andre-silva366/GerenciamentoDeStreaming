@@ -11,7 +11,7 @@ public class ClienteRepository : IClienteRepository
 
     public ClienteRepository()
     {
-        _connection = new SqlConnection(@"Server=ANDRE-SILVA366\SQLEXPRESS;Initial Catalog=iptv;Integrated Security=True;Connect Timeout=30;Encrypt=False;");
+        _connection = new SqlConnection(@"Server=ANDRE-SILVA366\SQLEXPRESS;Initial Catalog=streaming;Integrated Security=True;Connect Timeout=30;Encrypt=False;");
     }
 
     public List<Cliente> Get()
@@ -56,13 +56,78 @@ public class ClienteRepository : IClienteRepository
 
     public Cliente Get(int id)
     {
-        //command = new SqlCommand("SELECT c.Nome, c.Telefone, c.Valor, c.Data_Ultimo_Pagamento, " +
-        //        "a.Nome AS Aplicativo , p.Nome AS Plano, s.Nome AS Servidor FROM Clientes c " +
-        //        "INNER JOIN Aplicativos a ON c.Aplicativo_id = a.Aplicativo_id" +
-        //        "INNER JOIN Planos p ON p.Plano_id = c.Plano_id" +
-        //        "INNER JOIN Servidores s ON s.Servidor_id = c.Servidor_id;",
-                //(SqlConnection)_connection);
-        throw new NotImplementedException();
+        try
+        {
+            Cliente cliente = new Cliente();
+            SqlCommand command = new SqlCommand();
+
+            command.CommandText = "SELECT c.Nome, c.Telefone, c.Email, c.Valor, c.Data_Ultimo_Pagamento, c.Data_Proximo_Pagamento ," +
+                "s.Nome AS Servidor ,a.Nome AS Aplicativo , p.Nome AS Plano FROM Clientes c " +
+                "INNER JOIN Aplicativos a ON c.Aplicativo_id = a.Aplicativo_id " +
+                "INNER JOIN Planos p ON p.Plano_id = c.Plano_id " +
+                "INNER JOIN Servidores s ON s.Servidor_id = c.Servidor_id WHERE c.Cliente_id = @Id;";
+            command.Connection =  (SqlConnection) _connection;
+
+            command.Parameters.AddWithValue("@Id", id);
+
+            _connection.Open();
+
+            SqlDataReader dataReader = command.ExecuteReader();
+
+            Dictionary<int, Cliente> clienteDictionary = new Dictionary<int, Cliente>();
+
+            while(dataReader.Read())
+            {
+                if (!clienteDictionary.ContainsKey(id))
+                {
+                    cliente.Nome = dataReader.GetString(0);
+                    cliente.Telefone = dataReader.GetString(1);
+                    cliente.Email = dataReader.GetString(2);
+                    cliente.Valor = dataReader.GetDecimal(3);
+                    cliente.DataUltimoPagamento = dataReader.GetDateTime(4);
+                    cliente.DataProximoPagamento = dataReader.GetDateTime(5);
+
+                    Servidor servidor = new Servidor();
+                    List<Servidor> servidores = new List<Servidor>(); 
+                    servidor.Nome = dataReader.GetString(6);
+
+                    servidores.Add(servidor);
+
+                    cliente.Servidores = servidores;
+                    clienteDictionary.Add(id, cliente);
+                }
+                else
+                {
+                    cliente = clienteDictionary[dataReader.GetInt32(0)];
+                }
+
+                Aplicativo aplicativo = new Aplicativo();
+                List<Aplicativo> aplicativos = new List<Aplicativo>();
+
+                aplicativo.Nome = dataReader.GetString(7);
+
+                aplicativos.Add(aplicativo);
+                cliente.Aplicativos = aplicativos;
+
+                Plano plano = new Plano();
+                plano.Nome = dataReader.GetString(8);
+
+                cliente.Plano = plano;
+            }
+
+            return cliente;
+
+        }
+        catch(Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+        finally
+        {
+            _connection.Close();
+        }
+        
+        
     }
 
     public void Post(Cliente cliente)

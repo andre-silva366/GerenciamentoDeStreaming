@@ -4,6 +4,7 @@ namespace GerenciamentoClientesStreaming.Models;
 
 public class Cliente
 {
+    [JsonIgnore]
     public int ClienteId { get; set; }
 
     [JsonIgnore]
@@ -21,12 +22,12 @@ public class Cliente
     public DateTime DataUltimoPagamento { get; set; }
     public DateTime DataProximoPagamento { get; set; }
 
-    [JsonIgnore]
+    
     public ICollection<Aplicativo> Aplicativos { get; set; } = [];
 
-    [JsonIgnore]
+   
     public ICollection<Servidor> Servidores { get; set; } = [];
 
-    [JsonIgnore]
+    
     public Plano Plano { get; set; } = new();
 }

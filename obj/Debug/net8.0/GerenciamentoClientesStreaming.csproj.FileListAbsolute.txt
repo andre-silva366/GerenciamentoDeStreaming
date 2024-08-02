@@ -36,3 +36,4 @@ D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\
 D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\GerenciamentoClientesStreaming.pdb
 D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\GerenciamentoClientesStreaming.genruntimeconfig.cache
 D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\ref\GerenciamentoClientesStreaming.dll
+D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\GerenciamentoClientesStreaming.sourcelink.json

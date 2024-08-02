@@ -20,4 +20,10 @@ public class ClientesController : ControllerBase
     {
         return Ok(_repository.Get());
     }
+
+    [HttpGet("{id:int}")]
+    public IActionResult Get(int id)
+    {
+        return Ok(_repository.Get(id));
+    }
 }
