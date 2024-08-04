@@ -1,6 +1,5 @@
 ﻿using GerenciamentoClientesStreaming.Models;
 using GerenciamentoClientesStreaming.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GerenciamentoClientesStreaming.Controllers;
@@ -9,7 +8,7 @@ namespace GerenciamentoClientesStreaming.Controllers;
 [ApiController]
 public class ClientesController : ControllerBase
 {
-    private IClienteRepository _repository;
+    private IRepository<Cliente> _repository;
 
     public ClientesController()
     {
@@ -82,5 +81,25 @@ public class ClientesController : ControllerBase
         {
             return StatusCode(500, e.Message);
         }
+    }
+
+    [HttpDelete("{id:int}")]
+    public IActionResult Delete(int id)
+    {
+        if(id > 0)
+        {
+            try
+            {
+                _repository.Delete(id);
+            }
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok($"Cliente com id: {id} foi deletado com sucesso");
+        }
+
+        return BadRequest("O id informado é inválido");
     }
 }

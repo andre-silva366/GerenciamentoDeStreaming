@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace GerenciamentoClientesStreaming.Repositories;
 
-public class ClienteRepository : IClienteRepository
+public class ClienteRepository : IRepository<Cliente>
 {
     // Conexão do ADO
     private IDbConnection _connection;
@@ -227,9 +227,30 @@ public class ClienteRepository : IClienteRepository
         }
     }
 
-    public void Delete(Cliente cliente)
+    public void Delete(int id)
     {
-        throw new NotImplementedException();
+        SqlCommand command = new SqlCommand();
+
+        try
+        {
+            _connection.Open();
+            command.Connection = (SqlConnection) _connection;
+            command.CommandText = $"DELETE Clientes WHERE  Cliente_id = {id}";
+
+            if(command.ExecuteNonQuery() == 0)
+            {
+                throw new Exception($"Não existe cliente com o id: {id}");
+            }            
+            
+        }
+        catch(Exception e)
+        {
+            throw new Exception(e.Message);
+        }
+        finally
+        {
+            _connection.Close();
+        }
     }
 
     
