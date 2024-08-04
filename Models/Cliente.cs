@@ -4,30 +4,25 @@ namespace GerenciamentoClientesStreaming.Models;
 
 public class Cliente
 {
-    [JsonIgnore]
+    
     public int ClienteId { get; set; }
-
-    [JsonIgnore]
+    public string Nome { get; set; } 
+    public string Telefone { get; set; } 
+    public string Email { get; set; }
+    
+    public int ServidorId { get; set; }
+    
+    public int PlanoId { get; set; }
+    public decimal Valor { get; set; }
+    public DateTime DataUltimoPagamento { get; set; } = DateTime.Now;
+    public DateTime DataProximoPagamento { get; set; } = DateTime.Now.AddMonths(1);
+    
     public int AplicativoId { get; set; }
 
-    [JsonIgnore]
-    public int ServidorId { get; set; }
-
-    [JsonIgnore]
-    public int PlanoId { get; set; }
-    public string Nome { get; set; } = "";
-    public string Telefone { get; set; } = "";
-    public string Email { get; set; } = "";
-    public decimal Valor { get; set; }
-    public DateTime DataUltimoPagamento { get; set; }
-    public DateTime DataProximoPagamento { get; set; }
-
     
-    public ICollection<Aplicativo> Aplicativos { get; set; } = [];
-
+    public Aplicativo Aplicativo { get; set; }
+    
+    public Servidor Servidor { get; set; }
    
-    public ICollection<Servidor> Servidores { get; set; } = [];
-
-    
-    public Plano Plano { get; set; } = new();
+    public Plano Plano { get; set; } 
 }
