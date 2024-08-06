@@ -1,9 +1,7 @@
-﻿using System.Text.Json.Serialization;
-
-namespace GerenciamentoClientesStreaming.Models;
+﻿namespace GerenciamentoClientesStreaming.Models;
 
 public class Plano
 {    
     public int PlanoId { get; set; }
-    public string Nome { get; set; } = "";
+    public string Nome { get; set; } 
 }

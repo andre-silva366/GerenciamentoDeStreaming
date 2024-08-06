@@ -22,6 +22,7 @@ D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\
 D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\GerenciamentoClientesStreaming.csproj.CoreCompileInputs.cache
 D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\GerenciamentoClientesStreaming.MvcApplicationPartsAssemblyInfo.cs
 D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\GerenciamentoClientesStreaming.MvcApplicationPartsAssemblyInfo.cache
+D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\GerenciamentoClientesStreaming.sourcelink.json
 D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\staticwebassets.build.json
 D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\staticwebassets.development.json
 D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\staticwebassets\msbuild.GerenciamentoClientesStreaming.Microsoft.AspNetCore.StaticWebAssets.props
@@ -36,4 +37,3 @@ D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\
 D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\GerenciamentoClientesStreaming.pdb
 D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\GerenciamentoClientesStreaming.genruntimeconfig.cache
 D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\ref\GerenciamentoClientesStreaming.dll
-D:\andre\Projetos\GerenciamentoClientesStreaming\GerenciamentoClientesStreaming\obj\Debug\net8.0\GerenciamentoClientesStreaming.sourcelink.json

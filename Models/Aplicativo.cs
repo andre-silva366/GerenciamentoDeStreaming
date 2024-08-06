@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace GerenciamentoClientesStreaming.Models;
+﻿namespace GerenciamentoClientesStreaming.Models;
 
 public class Aplicativo
 {
